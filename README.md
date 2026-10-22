@@ -36,12 +36,15 @@ Classfication of Images using two models on coco dataset
 No. LFM2.5 is faster and lighter, but its F1 is much lower (0.213 vs 0.397), and once invalid outputs are excluded it hallucinates more than InternVL (47.4% vs 31.0%).
 
 **2. Which model hallucinates more, and on what kinds of images?**
+
 Strictly InternVL (13% vs 9%), but LFM2.5 is worse on valid outputs, mostly misidentifying household items. InternVL struggles on 2-3 object images, adding benches, laptops and potted plants.
 
 **3. How much does recall change when small objects are ignored? What does that tell you about each model?**
+
 Only slightly for both (LFM2.5 0.135 → 0.162, InternVL 0.264 → 0.310), so the real problem is invalid JSON (e.g. repeated text with no closing), not missed small objects.
 
 **4. Which model would you deploy for real-time, high-volume tagging, and why?**
+
 InternVL3.5-1B, because LFM's raw speed advantage mostly disappears once validity is counted (about 0.09 vs 0.08 valid images/s), and InternVL has much higher precision and F1. Constrained JSON decoding, a repetition penalty and a lower max_new_tokens would help both models.
 
 ---
