@@ -33,6 +33,7 @@ Classfication of Images using two models on coco dataset
 # Write-up questions
 
 **1. Does LFM2.5's extra 0.6B parameters buy enough F1 and lower hallucination to justify its latency and memory?**
+
 No. LFM2.5 is faster and lighter, but its F1 is much lower (0.213 vs 0.397), and once invalid outputs are excluded it hallucinates more than InternVL (47.4% vs 31.0%).
 
 **2. Which model hallucinates more, and on what kinds of images?**
