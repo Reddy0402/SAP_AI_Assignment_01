@@ -1,6 +1,23 @@
 # SAP_AI_Assignment_01
 Classfication of Images using two models on coco dataset 
 
+
+# Error-analysis notes
+
+**LFM2.5-VL-1.6B**
+
+- **Image 93 (laptop desk scene):** listed 24 classes that are not present. It appears to dump much of the class list instead of describing the image.
+- **Image 28 (dining table):** fell into a repetition loop and never closed the array, so all 6 correct objects were lost as invalid.
+- **Image 0 (living room):** looped on potted plant / dining table / chair / fireplace, and "fireplace" is outside the 80 classes.
+
+**InternVL3.5-1B**
+
+- **Image 84 (street, motorcycle):** added bench, stop sign, cell phone, potted plant and backpack, and missed bicycle and chair.
+- **Image 28 (dining table):** used out-of-vocabulary names (tissue, bread, wine) and omitted person, so the output was invalid.
+- **Image 0 (living room):** repeated "chair" until the token limit, giving invalid JSON.
+
+---
+
 # Results table
 
 | Metric                    | LFM2.5-VL-1.6B | InternVL3.5-1B |
